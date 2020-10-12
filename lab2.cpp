@@ -166,7 +166,7 @@ public:
 		}
 		cout << "The minimal element is: " << min << endl;
 	}
-	void sort_min_to_max(int field) {
+	void sort_min_to_max(int field) { // В Ы В О Д  Н Е  Р А Б О Т А Е Т
 		Data_base db;
 		student temp;
 		switch (field) {
@@ -220,7 +220,7 @@ public:
 			break;
 		}
 	}
-	void sort_max_to_min(int field) {
+	void sort_max_to_min(int field) { // В Ы В О Д  Н Е  Р А Б О Т А Е Т
 		Data_base db;
 		student temp;
 		switch (field) {
