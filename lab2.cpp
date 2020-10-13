@@ -9,7 +9,7 @@ struct student {
 	string fac;
 	string groupe;
 };
-const int N = 5;
+const int N = 3;
 class Data_base {
 private:
 	student array[N];
@@ -166,8 +166,7 @@ public:
 		}
 		cout << "The minimal element is: " << min << endl;
 	}
-	void sort_min_to_max(int field) { // В Ы В О Д  Н Е  Р А Б О Т А Е Т
-		Data_base db;
+	void sort_min_to_max(int field) {
 		student temp;
 		switch (field) {
 		case 0: // name
@@ -214,14 +213,14 @@ public:
 				}
 			}
 			break;
-			db.output_all();
+			
 		default:
 			cout << "This field is absent. Try again." << endl;
 			break;
 		}
+		output_all();
 	}
-	void sort_max_to_min(int field) { // В Ы В О Д  Н Е  Р А Б О Т А Е Т
-		Data_base db;
+	void sort_max_to_min(int field) {
 		student temp;
 		switch (field) {
 		case 0: // name
@@ -268,11 +267,11 @@ public:
 				}
 			}
 			break;
-			db.output_all();
 		default:
 			cout << "This field is absent. Try again." << endl;
 			break;
 		}
+		output_all();
 	}
 	void write_in_file() {
 		string tr = "\n";
@@ -303,7 +302,6 @@ public:
 };
 int main() {
 	Data_base db;
-	student array[N];
 	student st;
 	int index = 0;
 	int field = 0;
@@ -321,29 +319,35 @@ int main() {
 		cout << "Enter the groupe number: ";
 		cin >> st.groupe;
 		db.input_struct_var(i, st);
+		cout << endl;
 	}
 	cout << "Enter index: ";
 	cin >> index;
 	db.output_struct_var(index);
 	db.output_all();
+	cout << endl;
 	cout << "Seach element" << endl;
 	cout << "Enter field: 0 - name, 1 - record book number, 2 - faculty, 3 - groupe" << endl;
 	cin >> field;
 	cout << "Enter element, that you want to find: ";
 	cin >> element;
 	db.search_element(field, element);
+	cout << endl;
 	cout << "Minimal element" << endl;
 	cout << "Enter field: 0 - name, 1 - record book number, 2 - faculty, 3 - groupe" << endl;
 	cin >> field;
 	db.search_min_element(field);
+	cout << endl;
 	cout << "Min to max sort" << endl;
 	cout << "Enter field: 0 - name, 1 - record book number, 2 - faculty, 3 - groupe" << endl;
 	cin >> field;
 	db.sort_min_to_max(field);
+	cout << endl;
 	cout << "Max to min sort" << endl;
 	cout << "Enter field: 0 - name, 1 - record book number, 2 - faculty, 3 - groupe" << endl;
 	cin >> field;
 	db.sort_max_to_min(field);
+	cout << endl;
 	db.write_in_file();
 	db.read_from_file();
 	db.file_clear();
