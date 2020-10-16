@@ -131,7 +131,7 @@ public:
 		case 0: // name
 			min = array[0].name;
 			for (int i = 0; i < N - 1; i++) {
-				if (min < array[i + 1].name) {
+				if (min > array[i + 1].name) {
 					min = array[i + 1].name;
 				}
 			}
@@ -139,7 +139,7 @@ public:
 		case 1: // recbook_num
 			min = array[0].recbook_num;
 			for (int i = 0; i < N - 1; i++) {
-				if (min < array[i + 1].recbook_num) {
+				if (min > array[i + 1].recbook_num) {
 					min = array[i + 1].recbook_num;
 				}
 			}
@@ -147,7 +147,7 @@ public:
 		case 2: // fac
 			min = array[0].fac;
 			for (int i = 0; i < N - 1; i++) {
-				if (min < array[i + 1].fac) {
+				if (min > array[i + 1].fac) {
 					min = array[i + 1].fac;
 				}
 			}
@@ -155,7 +155,7 @@ public:
 		case 3: // groupe
 			min = array[0].groupe;
 			for (int i = 0; i < N - 1; i++) {
-				if (min < array[i + 1].groupe) {
+				if (min > array[i + 1].groupe) {
 					min = array[i + 1].groupe;
 				}
 			}
@@ -350,6 +350,6 @@ int main() {
 	cout << endl;
 	db.write_in_file();
 	db.read_from_file();
-	db.file_clear();
+	//db.file_clear();
 	return 0;
 }
