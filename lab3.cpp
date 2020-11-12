@@ -12,18 +12,19 @@ struct node {
 };
 class List {
 private:
-	node* first;
+	node* first = new node;
+	node* last = new node;
 public:
 	List() {
 		first->next = NULL;
+		last->next = NULL;
 	}
 	void add_to_end(int d) {
-		if (first->next == NULL) {
-			node* current = new node;
-			current->data = d;
-			first->next = current;
-			current->next = NULL;
-		 }
+		node* current = new node;
+		last->next = current;
+		last->data = d;
+		last = current;
+		last->next = NULL;
 	}
 	void show_list() {
 		node* current = first;
