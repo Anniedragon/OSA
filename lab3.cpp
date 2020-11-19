@@ -70,10 +70,10 @@ public:
 	}
 
 	void add_to_begin(student d) {
-		node* new_element = new node;
-		new_element->data = d;
-		new_element->next = first;
-		first = new_element;
+		node* current = new node;
+		current->data = d;
+		current->next = first;
+		first = current;
 	}
 
 	void delete_the_last() {
@@ -584,10 +584,10 @@ public:
 	}
 
 	void add_to_begin(student d) {
-		node_duo* new_element = new node_duo;
-		new_element->data = d;
-		new_element->next = first;
-		first = new_element;
+		node_duo* current = new node_duo;
+		current->data = d;
+		current->next = first;
+		first = current;
 	}
 	
 	void delete_the_last() {
