@@ -3,9 +3,6 @@
 #include <string>
 using namespace std;
 
-// D E M O ! ! ! 
-// D O N ' T  W O R K ! ! !
-
 struct bin_node { // узел бинарного дерева (вершина)
     int data; // число
     bin_node* left; // левое поддерево
@@ -24,14 +21,7 @@ public:
     Bin_Tree() { // конструктор (он же метод по созданию бинарного дерева)
         tree->root = NULL;
         tree->count = 0;
-    }
-
-    Bin_Tree(int d) {
-        tree->root->data = d;
-        tree->root->left = NULL;
-        tree->root->right = NULL;
-        tree->count = 0;
-    }
+    } 
 
     int bin_search(int element) { // поиск узла дерева
         bin_node* node = new bin_node;
@@ -45,6 +35,7 @@ public:
                 return 0;
             }
             else if (node->data == element) {
+                cout << "You element is found!" << endl;
                 return 1;
             }
             else if (element > node->data) {
@@ -56,29 +47,22 @@ public:
 
     int bin_insert(int element) { // вставка узла дерева
         bin_node* node = new bin_node;
-        bin_node** addr_node; // адрес узла дерева
-        if (tree == NULL) {
-            cout << "Tree is empty" << endl;
-            return 0;
-        }
+        bin_node** addr_node = new bin_node*;
         node = tree->root;
         addr_node = &tree->root;
         for (;;) {
             if (node == NULL) {
-                bin_node* addr_node = new bin_node;
-                node = addr_node; // в оригинале перед addr_node должна стоять *, но компилятор на неё ругается
-                if (node != NULL) {
-                    node->data = element;
-                    node->left = node->right = NULL;
-                    tree->count++;
-                    return 1;
-                }
-                else return 0;
+                bin_node* n_node = new bin_node;
+                n_node->data = element;
+                n_node->left = n_node->right = NULL;
+                *addr_node = n_node;
+                tree->count++;
+                return 1;
             }
-            else if (element == node->data) {
+            else if (node->data == element) {
                 return 2;
             }
-            else if (element > node->data) {
+            else if (node->data < element) {
                 addr_node = &node->right;
                 node = node->right;
             }
@@ -89,15 +73,15 @@ public:
         }
     }
 
-    bin_node* return_root() {
+    bin_node* return_root() { // возврат адреса корня дерева
         return tree->root;
     }
 
-    int tree_in_file(bin_node* node) {
+    int tree_in_file(bin_node* node) { // запись дерева в файл
         if (node == NULL) {
             return 0;
         }
-        ofstream file("file.txt");
+        ofstream file("C:\\Users\\agush\\Desktop\\Мосполитех. Программирование\\2 курс\\Основы современных алгоритмов\\test.txt", ofstream::app);
         file << node->data << " ";
         file.close();
         tree_in_file(node->right);
@@ -115,5 +99,8 @@ int main() {
     cin >> element;
     tr.bin_search(element);
     tr.tree_in_file(tr.return_root());
+    return 0;
 }
+
+
 
